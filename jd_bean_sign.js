@@ -6,6 +6,21 @@ IOS软件用户请使用 https://raw.githubusercontent.com/NobyDa/Script/master/
 更新时间：2021-5-6
 推送通知默认简洁模式(多账号只发送一次)。如需详细通知，设置环境变量 JD_BEAN_SIGN_NOTIFY_SIMPLE 为false即可(N账号推送N次通知)。
 Modified From github https://github.com/ruicky/jd_sign_bot
+脚本兼容: QuantumultX, Surge, Loon, 小火箭，JSBox, Node.js
+============Quantumultx===============
+[task_local]
+#多合一签到
+7 0,17 * * * jd_bean_sign.js, tag=领京豆额外奖励, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jd_bean_home.png, enabled=true
+
+================Loon==============
+[Script]
+cron "7 0,17 * * *" script-path=jd_bean_sign.js, tag=多合一签到
+
+===============Surge=================
+多合一签到 = type=cron,cronexp="7 0,17 * * *",wake-system=1,timeout=3600,script-path=jd_bean_sign.js
+
+============小火箭=========
+多合一签到 = type=cron,script-path=jd_bean_sign.js, cronexpr="7 0,17 * * *", timeout=3600, enable=true
  */
 const $ = new Env('京东多合一签到');
 const notify = $.isNode() ? require('./sendNotify') : '';
